@@ -8,6 +8,7 @@ RUN apk --no-cache add \
 	bash \
 	socat \
 	gawk \
+	coreutils \
 	mariadb \
 	mariadb-client
 
