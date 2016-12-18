@@ -57,13 +57,12 @@ _datadir() {
 }
 
 # allow the container to be started with `--user`
-if [ "$1" = 'mysqld' -a -z "$wantHelp" -a "$(id -u)" = '0' ]; then
-	_check_config "$@"
-	DATADIR="$(_datadir "$@")"
-	mkdir -p "$DATADIR"
-	chown -R mysql:mysql "$DATADIR"
-	exec gosu mysql "$BASH_SOURCE" "$@"
-fi
+#if [ "$1" = 'mysqld' -a -z "$wantHelp" -a "$(id -u)" = '0' ]; then
+#	_check_config "$@"
+#	DATADIR="$(_datadir "$@")"
+#	mkdir -p "$DATADIR"
+#	chown -R mysql:mysql "$DATADIR"
+#fi
 
 if [ "$1" = 'mysqld' -a -z "$wantHelp" ]; then
 	# still need to check config, container may have started with --user
@@ -85,7 +84,7 @@ if [ "$1" = 'mysqld' -a -z "$wantHelp" ]; then
 		mysql_install_db --datadir="$DATADIR" --rpm
 		echo 'Database initialized'
 
-		"$@" --skip-networking --socket=/var/run/mysqld/mysqld.sock &
+		"$@" --skip-networking --socket=/var/run/mysqld/mysqld.sock --user=root &
 		pid="$!"
 
 		mysql=( mysql --protocol=socket -uroot -hlocalhost --socket=/var/run/mysqld/mysqld.sock )
