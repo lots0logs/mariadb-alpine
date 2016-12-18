@@ -3,8 +3,6 @@ MAINTAINER Elegant Themes, Inc.
 
 ENV LC_ALL=en_US.UTF-8
 
-RUN groupadd -r mysql && useradd -r -g mysql mysql
-
 RUN apk --no-cache -U upgrade
 RUN apk --no-cache add mariadb mariadb-client
 
