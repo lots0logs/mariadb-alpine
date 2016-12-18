@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Elegant Themes, Inc. <support@elegantthemes.com>
+MAINTAINER Elegant Themes, Inc.
 
 ENV LC_ALL=en_US.UTF-8
 
