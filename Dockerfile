@@ -4,7 +4,12 @@ MAINTAINER Elegant Themes, Inc.
 ENV LC_ALL=en_US.UTF-8
 
 RUN apk --no-cache -U upgrade
-RUN apk --no-cache add bash mariadb mariadb-client
+RUN apk --no-cache add \
+	bash \
+	socat \
+	gawk \
+	mariadb \
+	mariadb-client
 
 RUN mkdir /docker-entrypoint-initdb.d
 
