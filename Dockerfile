@@ -12,7 +12,8 @@ RUN apk --no-cache add \
 
 SHELL ["/bin/bash", "-c"]
 
-RUN mkdir -p /docker-entrypoint-initdb.d /var/run/mysqld
+RUN mkdir -p /docker-entrypoint-initdb.d /var/run/mysqld /var/lib/mysql
+RUN chown mysql:mysql /var/lib/mysql
 
 # comment out a few problematic configuration values
 # don't reverse lookup hostnames, they are usually another container
